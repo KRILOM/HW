@@ -1,4 +1,4 @@
-public class HWork22 {
+public class HWork26 {
     public static void main(String[] args) {
 int sum = 0;
         for (int i = 000001; i <= 999999; i++){
