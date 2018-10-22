@@ -1,7 +1,7 @@
 public class HWork26 {
     public static void main(String[] args) {
 int sum = 0;
-        for (int i = 000001; i <= 999999; i++){
+        for (int i = 1; i <= 999999; i++){
     int num1 = i / 100000;
     int num2 = (i % 100000) / 10000;
     int num3 = (i % 10000) / 1000;
