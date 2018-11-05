@@ -1,14 +1,19 @@
-import java.util.Scanner;
 
 public class Book {
+    private String name;
 
-    Scanner in = new Scanner(System.in);
-    int size = in.nextInt();
-    Book[] books = new Book[size];
-    int countadd = 0;
-    int remove = 0;
-    public void bookadd(Book book){
-
+    public String getName() {
+        return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }
