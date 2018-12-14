@@ -1,15 +1,19 @@
+//        Скопировать файл (имена файлов задаются с клавиатуры).
+//        Программа должна выводить количество скопированных байт.
+
 import java.io.*;
 import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.Scanner;
 
+
 public class Szad1 {
 
-    private int readByte(File fileForRead, File fileForWrite, Charset charset) throws IOException {
+    private int readByte(File ReadFile, File WriteFile, Charset charset) throws IOException {
        try(
-           InputStream in = new FileInputStream(fileForRead);
+           InputStream in = new FileInputStream(ReadFile);
            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-           FileOutputStream out = new FileOutputStream(fileForWrite);
+           FileOutputStream out = new FileOutputStream(WriteFile);
            BufferedOutputStream bout = new BufferedOutputStream(out))
        {
            byte[] buf = new byte[1024];
@@ -20,40 +24,38 @@ public class Szad1 {
            }
            System.out.println(len);
            String s = new String(byteArrayOutputStream.toByteArray());
-           byte[] numberOfCopyedBytes = s.getBytes(charset);
-           int i = numberOfCopyedBytes.length;
-       //запись массива байт в другой файл
+           byte[] CopyBytesNum = s.getBytes(charset);
+           int i = CopyBytesNum.length;
+
            bout.write(buf, 0 , buf.length);
            return i;
        }
     }
     public String fileForm (String s){
-        String check = "[^.txt]";
-        String giveBack = null;
-        if(s.replaceAll(check, "").equals(".txt")){
-            giveBack = s;
+        String c = "[^.txt]";
+        String back = null;
+        if(s.replaceAll(c, "").equals(".txt")){
+            back = s;
         }else{
-            giveBack = " File must be in txt format";
-            //System.out.println(giveBack);
+            back = " File must be in txt format";
         }
-        return giveBack;
+        return back;
     }
     public static void main(String[] args){
 
         Szad1 szad1 = new Szad1();
         Scanner scanner = new Scanner(System.in);
         System.out.println(" File to copy");
-        File fileToCopy = new File(scanner.nextLine());
+        File a = new File(scanner.nextLine());
         System.out.println("EnterFile");
-        File fileCopy = new File(scanner.nextLine());
+        File b = new File(scanner.nextLine());
         try {
-            System.out.println(szad1.readByte(fileToCopy,fileCopy,Charset.forName("UTF-8")));
+            System.out.println(szad1.readByte(a,b,Charset.forName("UTF-8")));
         }
             catch (FileNotFoundException e ){
-            System.out.println("File whith that name is not founded ");
+            System.out.println("File with that name is not founded ");
         }catch (IOException e ){
             e.printStackTrace();
         }
     }
-
 }
